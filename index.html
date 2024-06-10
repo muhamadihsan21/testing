@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+
+    <title>Kelompok 4</title>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="nav-left">
+                <img class="logo" src="assets/revou-removebg-preview.png" alt="Logo Revou">
+                <h1 class="judul">VENDING MACHINE SALES</h1>
+            </div>
+            <div >
+                <a href="index.html" id="dashboard-link">Dashboard</a>
+                <a href="data.html">Data Set</a>
+                <a href="recommmendation.html">Recommendation</a>
+                <a href="contact.html" id="contact-link">Contact</a>
+            </div>
+        </div>
+
+    </header>
+    <main class="main-content">
+        <aside class="sidebar">
+
+            <div class="box-aside">
+                <div class="box-aside1">Total Penjualan
+                        <div id="total_sales">0</div>
+                </div>
+                <div class="box-aside2"> Total Pendapatan
+                    <div id="total_revenue">$0</div>
+                </div>
+                <div class="box-aside3">Metode Pembayaran
+                    <canvas id="pieTipe_divg" style="position: relative; height:40vh; width:80vw; margin :auto;"></canvas>
+
+                </div>
+            </div>
+
+        </aside>
+        <section class="box-content-container">
+            <div class="sort-controls">
+                <label>Filter:</label>
+                <select id="quartilSelect">
+                    <option  value="">Pilih Periode</option>
+                    <option value="Semua">Semua</option>
+                    <option value="Q1">Q1</option>
+                    <option value="Q2">Q2</option>
+                    <option value="Q3">Q3</option>
+                    <option value="Q4">Q4</option>
+                </select>
+                <select id="tipeSelect">
+                    <option  value="">Pilih Metode</option>
+                    <option value="Semua">Semua</option>
+                    <option value="Cash">Cash</option>
+                    <option value="Credit">Credit</option>
+                </select>
+                <select id="tipeProduk">
+                    <option value="">Pilih Lokasi</option>
+                    <option value="Semua">Semua</option>
+                </select>
+
+                <button id="generateChartButton">Generate</button>
+            </div>
+
+            <div class="box-container" id="box-container">
+                <div class="container1" >
+                    <canvas id="chart_divg" ></canvas>
+                </div>
+                <div class="container2" >
+                    <canvas id="linechart_divg" ></canvas>
+
+                </div>
+                <div class="container3" >
+                    <canvas id="piechart_divg" ></canvas>
+                </div>
+
+            </div>
+
+            <table id="salesTable"   >
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Device ID</th>
+                        <th>Location</th>
+                        <th>Machine</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Transaction</th>
+                        <th>TransDate</th>
+                        <th>Type</th>
+                        <th>RPrice</th>
+                        <th>RQty</th>
+                        <th>LineTotal</th>
+                        <th>TransTotal</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+
+    </main> 
+    <footer>
+        <p>2024  © Team 4 - Section Surabaya - Revou </p>
+    </footer>
+    <script type="module" src="script.js"></script>
+</body>
+</html>

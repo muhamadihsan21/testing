@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="nav-left">
+                <img class="logo" src="assets/revou-removebg-preview.png" alt="Logo Revou">
+                <h1 class="judul">VENDING MACHINE SALES</h1>
+            </div>
+            <div >
+                <a href="index.html" id="dashboard-link">Dashboard</a>
+                <a href="data.html">Data Set</a>
+                <a href="recommmendation.html">Recommendation</a>
+                <a href="contact.html" id="contact-link">Contact</a>
+            </div>
+        </div>
+    </header>
+    <main class="main-data">
+        <div>
+            <table id="salesTable" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Device ID</th>
+                        <th>Location</th>
+                        <th>Machine</th>
+                        <th>Product</th>
+                        <th>Category</th>
+                        <th>Transaction</th>
+                        <th>TransDate</th>
+                        <th>Type</th>
+                        <th>RPrice</th>
+                        <th>RQty</th>
+                        <th>LineTotal</th>
+                        <th>TransTotal</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+
+    
+        <script>
+            $(document).ready(function() {
+                $.getJSON("data.json", function(jsonData) {
+                    $('#salesTable').DataTable({
+                        data: jsonData,
+                        columns: [
+                            { data: 'Status' },
+                            { data: 'Device_ID' },
+                            { data: 'Location' },
+                            { data: 'Machine' },
+                            { data: 'Product' },
+                            { data: 'Category' },
+                            { data: 'Transaction' },
+                            { data: 'TransDate' },
+                            { data: 'Type' },
+                            { data: 'RPrice' },
+                            { data: 'RQty' },
+                            { data: 'LineTotal' },
+                            { data: 'TransTotal' }
+                        ]
+                    });
+                }).fail(function(jqXHR, textStatus, errorThrown) {
+                    console.error("Error loading JSON: " + textStatus, errorThrown);
+                });
+            });
+        </script>
+    </main>
+</body>
+</html>
